@@ -3,26 +3,35 @@ import React from 'react';
 class AddForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''}
+    this.state = {
+      word: '',
+      definition: ''
+    }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleWordChange = this.handleWordChange.bind(this)
+    this.handleDefChange = this.handleDefChange.bind(this)
   }
 
   // this.props.addEntry() {
   //   console.log('oi')
   // }
 
-  handleChange(e) {
-    this.setState({value: e.target.value})
+  handleWordChange(e) {
+    this.setState({word: e.target.value})
+  }
+  handleDefChange(e) {
+    this.setState({definition: e.target.value})
   }
 
   render() {
     return(
       <form>
-        <input type='text' value={this.state.value} onChange={this.handleChange} placeholder="enter 'word,definition'">
+        <input type='text' value={this.state.word} onChange={this.handleWordChange} placeholder="enter word">
         </input>
 
-        <button type='submit' onClick={(e)=>this.props.addEntry(e, this.state.value)}>Add Entry</button>
+        <input type='text' value={this.state.definition} onChange={this.handleDefChange} placeholder="enter definition"></input>
+
+        <button type='submit' onClick={(e)=>this.props.addEntry(e, this.state)}>Add/Edit Entry</button>
       </form>
     )
   }

@@ -15,9 +15,9 @@ app.use(express.json())
 //how do i make it so localhost:3000/glossary/:query???
 /////////////////////////////   GET   ////////////////////////////////
 
-app.post('/search', (req, res) => {
-  console.log(`received ${req.method} request`, req.body)
-  database.getOne(req.body, (err, data) => {
+app.get('/search', (req, res) => {
+  console.log(`received ${req.method} request`, req.query.word)
+  database.getOne(req.query, (err, data) => {
     if (err) {
       console.log(err)
     } else {
@@ -25,6 +25,7 @@ app.post('/search', (req, res) => {
     }
   })
 })
+
 
 app.get('/getAll', (req, res) => {
   console.log(`received ${req.method} request`)

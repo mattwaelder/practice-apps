@@ -5,7 +5,6 @@ let GlossaryList = (props) => {
 
   return (
     <ul className="glossary_list">
-      <h2>~~~GLOSSARY~~~</h2>
       <ListElement glossary={props.glossary} handleDelete={props.handleDelete}/>
     </ul>
   )

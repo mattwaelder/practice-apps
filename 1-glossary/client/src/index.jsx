@@ -26,25 +26,37 @@ class App extends React.Component {
   ///////////////////////////  METHODS  //////////////////////////////
 
   addEntry(e, input) {
-    //takes state from AddForm
-    //expect input to be word,definition
-    let [word, definition] = input.split(',')
     e.preventDefault()
-    //makes post req for that word/def
-    axios.post('/create', {word: word, definition: definition})
-    .then((res) => {
-      //make getAll req to refresh state
-      this.fetchDB()
-    })
-    .catch((err) => console.log(err))
+    try{
+      //if there is an error, skip the post req
+      if(input.word === '' || input.definition === '') {
+        alert("Invalid Entry! Must fill both fields")
+        throw new Error('failed to fill both fields')
+      }
+
+      axios.post('/create', input)
+      .then((res) => {
+        //make getAll req to refresh state
+        this.fetchDB()
+      })
+      .catch((err) => console.log(err.message))
+
+    } catch (err) {
+      console.log(err.message)
+      return
+    }
   }
 
   handleSearch(e, input) {
     e.preventDefault()
     //takes in state from search as arg
     //server get req for that word/words
-    axios.post('/search', {word: input})
+    axios.get('/search', {params: {word: input}})
     .then((res) => {
+      if (res.data.word === undefined) {
+        alert('Word not found :(')
+        throw new Error('word not found in database')
+      }
       //set state to just that one term
       let stateCopy = this.state;
       stateCopy.glossary = [{word: res.data.word, definition: res.data.definition}]
@@ -86,9 +98,12 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
-        <Search handleSearch = {this.handleSearch}/>
-        <AddForm addEntry = {this.addEntry}/>
+      <div class="content">
+        <h1>Glossary App</h1>
+          <div class="forms_container">
+            <Search handleSearch = {this.handleSearch}/>
+            <AddForm addEntry = {this.addEntry}/>
+          </div>
         <GlossaryList glossary={this.state.glossary} handleDelete={this.handleDelete}/>
       </div>
     );

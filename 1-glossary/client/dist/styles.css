@@ -1,10 +1,10 @@
 /**
- * 
+ *
  * Based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/.
- * 
+ *
  * Feel free to edit this file as needed.
- * 
- */ 
+ *
+ */
 
 *,
 *::before,
@@ -25,6 +25,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img,
@@ -54,7 +57,130 @@ h6 {
 }
 
 main {
-  max-width: 840px;
-  padding: 16px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 840px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 10px; */
+  z-index: 1000;
+}
+
+main::before {
+  content:'';
+  position: fixed;
+  left:0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: moccasin;
+  background-image: url("https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-1024x640.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+#root {
+  background: rgba(240,240,240, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+h1 {
+  padding: 0;
+  margin-top: 0;
+  font-size: 40px;
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+  color: rgb(197, 71, 71);
+  text-shadow: 2px 2px 2px rgba(0,0,0, 0.8);
+}
+
+form {
+  margin: 10px 5px;
+}
+
+input {
+  margin: 0px 5px;
+}
+
+button {
+  border: 2px solid rgba(197, 71, 71, 0.8);
+  border-radius: 8px;
+  background: white;
+  max-height: 32px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: transparent;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list_el {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  background:rgba(240,240,240, 0.4);
+  /* background: rgba(197, 71, 71, 0.3); */
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+  transition: 0.2s;
+  /* border: 2px solid rgb(197, 71, 71); */
+}
+
+.list_el:hover {
+  background: rgba(197, 71, 71, 0.3);
+}
+
+.list_el_content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list_el_content p {
+  text-indent: 5%;
+}
+
+.list_el_content h4 {
+  font-size: 18px;
+}
+
+/* ul.glossaryList {
+  padding: 0;
+} */
+ul {
+  padding: 0;
+}
+
+.forms_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -11,9 +11,11 @@ class ListElement extends React.Component {
   render() {
     let plsRender = this.props.glossary.map((el) => {
       return (
-      <div>
-        <h4>{el.word}:</h4>
-        <p>{el.definition}</p>
+      <div class="list_el">
+        <div class="list_el_content">
+          <h4>{el.word}:</h4>
+          <p>{el.definition}</p>
+        </div>
         <button type='submit' value={el.word} onClick={(e)=>this.props.handleDelete(e, e.target.value)}>delete</button>
       </div>
       )
