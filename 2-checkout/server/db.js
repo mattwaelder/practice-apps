@@ -14,23 +14,23 @@ const connection = mysql.createConnection({
 //multiArgs sets output to array of promises which fullfil to success values
 const db = Promise.promisifyAll(connection, { multiArgs: true });
 
-
+//this sets up the tables automatically (its in place of the .sql...)
 db.connectAsync()
   .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
   .then(() =>
     // Expand this table definition as needed:
 
-    //not really sure what this is doing
-    // db.createAsync()
 
     db.queryAsync(
+      // "select * from userinfo"
       "CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
     )
 
   )
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('IN DB CONNECTION ERR',err));
 
 module.exports = db;
+
 
 //module.exports is db object, which seems to be all of the promises from this module
 //stacked in one. any new methods/promises should also be attached to db...

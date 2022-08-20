@@ -5,6 +5,7 @@ class UserInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // form: 0,
       username: '',
       password: '',
       email: ''

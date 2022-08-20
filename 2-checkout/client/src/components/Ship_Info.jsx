@@ -5,6 +5,7 @@ class ShipInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // form: 1,
       address: '',
       phoneNumber: ''
     }

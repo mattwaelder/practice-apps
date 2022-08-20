@@ -15,18 +15,42 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e, state) {
+  handleClick(e, input) {
     e.preventDefault();
-    console.log(state);
     //takes in state from whatever form clicked
-    //if page < 4 add one to this.state.page
     if (this.state.currPage < 4) {
-      axios.post('/orders', state)
-      .then((data) => console.log(data))
+      // axios.post('/orders', {
+      //   email: input.email,
+      //   username: input.username,
+      //   password: input.password,
+      //   cookie: this.props.cookie,
+      // })
+      input.cookie = this.props.cookie;
+      let stateCopy = this.state;
+      for (let [key, value] of Object.entries(input)) {
+        stateCopy[key] = value;
+      }
+
+      stateCopy.currPage++;
+      console.log(stateCopy)
+      this.setState(stateCopy)
+
+    } else if (this.state.currPage >= 4) {
+      console.log(' > = 4')
+      //should now be on confirmation page
+      //should render all info from the state
+      //upon confirm should post info to db
+
+      // axios.post('/orders', input)
+      // .then((data) => console.log('POSTED',data))
+      // .then(() =>
+      //   //if page < 4 add one to this.state.page
+      //   this.setState(stateCopy))
+      // .catch((err) => console.log(err))
+
+
     }
-      //make post req to server with state info
-    //else set page to 0
-      //
+
   }
 
   render() {
