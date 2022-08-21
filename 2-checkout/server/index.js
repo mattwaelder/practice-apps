@@ -28,12 +28,12 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 ///////////////////////////   ROUTES   ////////////////////////////
 app.post('/orders', (req, res) => {
-  console.log(`${req.method} request received`, req.body)
+  console.log(`${req.method} request received`)
   model.create(req.body, (err, data) => {
     if (err) {
       console.log(err)
     } else {
-      res.send("received request")
+      res.sendStatus(201)
     }
   })
 })

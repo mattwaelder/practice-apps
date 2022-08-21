@@ -23,11 +23,11 @@ class UserInfo extends React.Component {
     return(
     <div className="user_info">
       <form>
-        <input type="text" placeholder="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
+        <input type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
 
         <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange}></input>
 
-        <input type="text" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+        <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
 
         <button type="submit" onClick={(e) => this.props.handleClick(e, this.state)}>Submit</button>
       </form>

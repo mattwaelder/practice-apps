@@ -36,18 +36,16 @@ class App extends React.Component {
       this.setState(stateCopy)
 
     } else if (this.state.currPage >= 3) {
-      alert('WE MADE IT LADS')
-      console.warn(this.state)
       //should now be on confirmation page
       //should render all info from the state
       //upon confirm should post info to db
 
-      // axios.post('/orders', input)
-      // .then((data) => console.log('POSTED',data))
-      // .then(() =>
-      //   //if page < 4 add one to this.state.page
-      //   this.setState(stateCopy))
-      // .catch((err) => console.log(err))
+      axios.post('/orders', this.state)
+      .then((res) => {
+        console.log(res)
+        this.setState({currPage: 0})
+      })
+      .catch((err) => console.log(err))
 
 
     }

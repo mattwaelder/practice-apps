@@ -10,7 +10,6 @@ CREATE TABLE userinfo (
   username varchar(25),
   password varchar(10),
   address varchar(100),
-  phone varchar(20),
   cc varchar(30),
   cvv varchar(10),
   expiration varchar(10)
