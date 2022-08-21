@@ -16,9 +16,9 @@ class App extends React.Component {
   }
 
   handleClick(e, input) {
-    e.preventDefault();
+    e ? e.preventDefault() : null;
     //takes in state from whatever form clicked
-    if (this.state.currPage < 4) {
+    if (this.state.currPage < 3) {
       // axios.post('/orders', {
       //   email: input.email,
       //   username: input.username,
@@ -35,8 +35,9 @@ class App extends React.Component {
       console.log(stateCopy)
       this.setState(stateCopy)
 
-    } else if (this.state.currPage >= 4) {
-      console.log(' > = 4')
+    } else if (this.state.currPage >= 3) {
+      alert('WE MADE IT LADS')
+      console.warn(this.state)
       //should now be on confirmation page
       //should render all info from the state
       //upon confirm should post info to db
@@ -73,7 +74,7 @@ class App extends React.Component {
       case 3:
         return(
           //might end up doing some other method here handleConfirmClick (?)
-          <Confirmation cookie={this.props.cookie} handleClick={this.handleClick}/>
+          <Confirmation info={this.state} handleClick={this.handleClick}/>
           )
           break;
       default:
